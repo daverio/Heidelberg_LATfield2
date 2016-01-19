@@ -28,9 +28,32 @@ int main(int argc, char **argv)
 		}
 	}
   parallel.initialize(n,m);
+
+  int i=1;
+  cout<< i<< endl;
+
+  cout << "Parallel size: "<< parallel.size()<<endl;
+  cout << "Parallel grid size: ("<<parallel.grid_size()[0]<<","<<parallel.grid_size()[1]<<"). "<<endl;
+  cout<< "Process rank: "<< parallel.rank()<<" ; Process grid position: ("<<parallel.grid_rank()[0]<<","<<parallel.grid_rank()[1]<<"). "<<endl;
+
   COUT << "Parallel size: "<< parallel.size()<<endl;
   COUT << "Parallel grid size: ("<<parallel.grid_size()[0]<<","<<parallel.grid_size()[1]<<"). "<<endl;
+  cout<< "Process rank: "<< parallel.rank()<<" ; Process grid position: ("<<parallel.grid_rank()[0]<<","<<parallel.grid_rank()[1]<<"). "<<endl;
 
+  int seed =1;
+  srand(seed + parallel.rank());
+  int a=rand() % 1000;
+  int min,max,sum,sum_dim0;
 
+  min = a;
+  parallel.min(min);
+  max = a;
+  parallel.max(max);
+  sum = a;
+  parallel.sum(sum);
+  sum_dim0 = a;
+  parallel.sum_dim0(sum_dim0);
+
+  cout << "min: "<<min << ", max: "<<max << ", sum: "<<sum << "sum_dim0: "<<sum_dim0<<endl;
 
 }

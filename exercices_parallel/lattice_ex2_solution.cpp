@@ -53,7 +53,7 @@ int main(int argc, char **argv)
     phi.initialize(lat);
     phi.alloc();
 
-    Field<Real> gradRho(lat,3);
+    Field<Real> gradPhi(lat,3);
     //-----------------------   end   ------------------------
 
     //--------------   Operations on Fields   ----------------
